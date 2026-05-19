@@ -1,0 +1,38 @@
+Implementacion de un sistema de inventario con autenticacion  JWT
+y esquemas postgreSQL separados
+
+arquitectura
+
+app/                            
+    main.py                     * Punto de entrada
+    database.py                 * Configuracion BD
+    models/                     * Modelos SQLAlchemy
+        auth_models.py          * Modelos para autenticacion (schema auth)
+        inventory_models.py     * Modelos para inventario (schema inventory)
+    schemas/                    * Esquemas Pydantic
+        auth.py  
+        inventory.py
+    routers/                    * Routers FastAPI
+        auth.py
+        inventory.py
+    dependencies.py             * Dependencias compartidas
+    utils/                      * Utilidades
+        security.py             * JWT y BCrypt
+    requeriments.txt            * Dependencias Python
+    .env                        * Variables de entorno
+
+
+
+1.- Configuración del Proyecto
+    Instalación de Dependencias
+    Terminal
+        # Crear entorno virtual
+        python -m venv venv
+        source venv/bin/activate --- linux
+        venv\Scripts\activate  ----- windows
+
+        # Instalar Dependencias
+        pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv python-jose[cryptography] passlib[bcrypt]
+
+        # requeriments.txt
+        pip install -r requeriments.txt

@@ -1,6 +1,10 @@
-from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP
+from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP, text
 from sqlalchemy.sql import func
 from ..database import Base
+from ..database import engine
+
+with engine.begin() as conn:
+    conn.execute(text("CREATE SCHEMA IF NOT EXISTS auth"))
 
 class User(Base):
     __tablename__ = "users"

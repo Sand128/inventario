@@ -1,6 +1,10 @@
 from sqlalchemy import Column, Integer, String, Numeric, TIMESTAMP
 from sqlalchemy.sql import func
-from ..database import Base
+from ..database import Base, engine
+from sqlalchemy import text
+
+with engine.begin() as conn:
+    conn.execute(text("CREATE SCHEMA IF NOT EXISTS inventory"))
 
 class Product(Base):
     __tablename__ = "products"
